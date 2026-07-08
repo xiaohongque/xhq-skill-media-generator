@@ -1,5 +1,7 @@
 # XHQ Media Generator
 
+> 🌐 Other languages: [简体中文](./README.zh-CN.md)
+
 A portable, agent-agnostic skill that teaches an AI agent how to invoke the
 **xhq backend** generative AI capabilities (video generation, image generation,
 digital-human / talking-avatar synthesis, video & image editing) through a
