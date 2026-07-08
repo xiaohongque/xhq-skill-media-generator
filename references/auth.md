@@ -8,7 +8,8 @@ you and appears in the web **雀豆明细** page automatically.
 
 ## Get a key (in the web app)
 
-1. Log into the xhq web app.
+1. Visit **https://www.xiaohongque.com** and log into your xhq account
+   (or sign up for a free account first).
 2. Open **Settings → API Keys** (设置 → API 密钥).
 3. Click **生成 API Key** (Generate API Key). The web app shows the
    plaintext key **once**.
@@ -17,6 +18,16 @@ you and appears in the web **雀豆明细** page automatically.
 
 > The plaintext key is shown only once and is never stored in a recoverable
 > form — keep it safe.
+
+### Quick recap
+
+```
+Visit https://www.xiaohongque.com
+  → Log in / Sign up
+  → Settings → API Keys
+  → Generate API Key
+  → Copy the sk_… key (shown only once)
+```
 
 ## Supply the key
 

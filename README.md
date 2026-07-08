@@ -25,7 +25,7 @@ re-derive the submit/poll flow each time.
 ## How a user gets started (the flow)
 
 ```
-1. User logs into the xhq web app
+1. User visits https://www.xiaohongque.com and logs into the xhq web app
 2. User opens Settings → "API Keys" → clicks "生成 API Key"
 3. Web app mints a new key → returns a plaintext key ONCE
 4. User copies the key (sk_…)

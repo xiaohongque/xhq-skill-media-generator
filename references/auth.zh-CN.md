@@ -8,13 +8,24 @@
 
 ## 获取 Key（在 Web 应用中）
 
-1. 登录 xhq Web 应用。
+1. 访问 **https://www.xiaohongque.com** 并登录你的 xhq 账户
+   （若还没有账户，请先免费注册）。
 2. 打开 **设置 → API Keys**（设置 → API 密钥）。
 3. 点击 **生成 API Key**（Generate API Key）。Web 应用**仅展示一次**明文 Key。
 4. 复制该 Key——它形如 `sk_ <48 个十六进制字符>`。你无法再次查看它；
    若丢失，请在设置中撤销并重新生成。
 
 > 明文 Key 仅展示一次，且永远不会以可恢复的形式存储——请妥善保管。
+
+### 快速回顾
+
+```
+访问 https://www.xiaohongque.com
+  → 登录 / 注册
+  → 设置 → API Keys
+  → 生成 API Key
+  → 复制 sk_… Key（仅展示一次）
+```
 
 ## 提供 Key
 
