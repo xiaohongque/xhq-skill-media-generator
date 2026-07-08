@@ -1,11 +1,11 @@
-# model-capabilities（公开技能）
+# 小红雀媒体生成
 
 一个可移植、与智能体无关的技能，用于教会 AI 智能体如何通过 **标准 REST API
-（Bearer API Key 鉴权）** 调用 **xhq 后端** 的生成式 AI 能力（视频生成、图像生成、
+（Bearer API Key 鉴权）** 调用 小红雀 **后端** 的生成式 AI 能力（视频生成、图像生成、
 数字人 / 口播数字人合成、视频与图像编辑）。
 
 它的设计目标是被**任意**智能体消费——CodeBuddy、Codex、Claude、Cursor 或
-自定义智能体——而不仅限于某个产品。无需 LeanCloud SDK，也无需用户会话：
+自定义智能体——而不仅限于某个产品。无需 SDK，也无需用户会话：
 只需要 HTTP + 一个 Key。
 
 ## 为什么存在
@@ -22,7 +22,7 @@
 ## 用户如何开始（流程）
 
 ```
-1. 用户登录 xhq Web 应用
+1. 用户登录 https://www.xiaohongque.com 应用
 2. 用户打开 设置 → "API Keys" → 点击 "生成 API Key"
 3. Web 应用生成新 Key → 仅返回一次明文 Key
 4. 用户复制该 Key（sk_…）
@@ -33,13 +33,11 @@
 7. 用户打开 Web 应用中的 雀豆明细 → 看到每一次智能体的消耗
 ```
 
-API Key 只是解析回同一个 `_User`，其 雀豆 本就由后端扣除，因此**无需改动计费**——
-消耗会自动出现在 雀豆明细 中。
 
 ## 目录结构
 
 ```
-model-capabilities/
+<root>/
 ├── SKILL.md                 # frontmatter（CodeBuddy 触发）+ 与智能体无关的正文
 ├── README.md                # 本文件
 ├── scripts/
@@ -53,7 +51,7 @@ model-capabilities/
 
 ### CodeBuddy
 
-将文件夹放在仓库的 `.codebuddy/skills/model-capabilities/`（或
+将文件夹放在仓库的 `.codebuddy/skills/`（或
 `~/.codebuddy/skills/`）下。CodeBuddy 读取 `SKILL.md` 的 frontmatter 来自动
 触发，并将正文作为指令读取。
 
@@ -72,10 +70,10 @@ model-capabilities/
 
 ## 环境变量（供 `run_task.js` 与直接 REST 调用使用）
 
-| 变量 | 说明 |
-| --- | --- |
+| 变量             | 说明                                                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `XHQ_API_BASE` | **可选。** 后端基础 URL（不含 `/1.1` 后缀）。默认为 `https://app.xiaohongque.com`。仅在非默认部署时设置。 |
-| `XHQ_API_KEY` | **必需。** Bearer API Key（`sk_…`）——见 `references/auth.md` |
+| `XHQ_API_KEY`  | **必需。** Bearer API Key（`sk_…`）——见 `references/auth.md`                                           |
 
 ## 扩展目录
 

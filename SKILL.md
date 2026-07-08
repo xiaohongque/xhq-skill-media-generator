@@ -1,5 +1,5 @@
 ---
-name: model-capabilities
+name: XHQ Media Generator
 description: >-
   Use when an agent needs to invoke the xhq backend's AI "model capabilities"
   (text/image-to-video generation, image generation, digital-human / talking-
@@ -12,8 +12,7 @@ description: >-
   /api/v1/capabilities catalog. A runnable helper, scripts/run_task.js, performs
   submit → poll → return-OSS-URL with zero dependencies (plain fetch).
 ---
-
-# xhq Model Capabilities
+# XHQ Media Generator
 
 This skill lets an AI agent call the xhq backend's generative AI capabilities
 over a **standard REST API** authenticated with a **Bearer API key** — no
@@ -92,8 +91,7 @@ to keep polling: `preparing`, `pending`, `processing`, `running`, `uploading`,
 
 ## Authentication
 
-Every mutating/status call requires a **Bearer API key** (`Authorization:
-Bearer <key>`, or the `x-api-key` header). Generate the key in the web app (see
+Every mutating/status call requires a **Bearer API key** (`Authorization: Bearer <key>`, or the `x-api-key` header). Generate the key in the web app (see
 `references/auth.md`) — there is no user session involved. The key resolves
 to your user account, so all 雀豆 consumption is billed to you and shows up in
 the web **雀豆明细** page automatically.

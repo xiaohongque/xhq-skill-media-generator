@@ -1,4 +1,4 @@
-# model-capabilities (public skill)
+# XHQ Media Generator
 
 A portable, agent-agnostic skill that teaches an AI agent how to invoke the
 **xhq backend** generative AI capabilities (video generation, image generation,
@@ -56,11 +56,13 @@ model-capabilities/
 ## Using with different agents
 
 ### CodeBuddy
+
 Place the folder under `.codebuddy/skills/model-capabilities/` in the repo (or
 `~/.codebuddy/skills/`). CodeBuddy reads the `SKILL.md` frontmatter to
 auto-trigger and reads the body as instructions.
 
 ### Codex / other agents (AGENTS.md pattern)
+
 Reference the skill body from your `AGENTS.md` / system prompt:
 
 ```markdown
@@ -74,10 +76,10 @@ Other agents ignore the YAML frontmatter and read the markdown body directly.
 
 ## Environment variables (used by `run_task.js` and direct REST calls)
 
-| Var | Description |
-| --- | --- |
+| Var              | Description                                                                                                                                    |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | `XHQ_API_BASE` | **Optional.** Backend base URL (no `/1.1` suffix). Defaults to `https://app.xiaohongque.com`. Set only for a non-default deployment. |
-| `XHQ_API_KEY` | **Required.** Bearer API key (`sk_…`) — see `references/auth.md` |
+| `XHQ_API_KEY`  | **Required.** Bearer API key (`sk_…`) — see `references/auth.md`                                                                   |
 
 ## Extending the catalog
 
