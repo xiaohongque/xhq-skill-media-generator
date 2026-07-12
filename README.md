@@ -28,7 +28,7 @@ re-derive the submit/poll flow each time.
 
 ### Step 1 — Create an API Key in the product
 
-![Create API Key](https://vid-xhq.xiaohongque.com/6957e1d606646d6d76a7a482/images/6b3267de9eb32f0d724025c440ec7b8a.jpg)
+![Create API Key](./docs/screen.png)
 
 1. Log into the [XHQ AI web app](https://www.xiaohongque.com) (or sign up for a free account first).
 2. Go to **Settings → Account → API Keys**.
