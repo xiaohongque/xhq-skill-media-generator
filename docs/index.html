@@ -52,9 +52,8 @@
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
   .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; }
-  .logo .dot {
-    width: 26px; height: 26px; border-radius: 8px; background: var(--grad);
-    display: grid; place-items: center; font-size: 14px;
+  .logo .logo-img {
+    height: 30px; width: auto; border-radius: 8px; display: block;
   }
   .nav-links { display: flex; align-items: center; gap: 26px; }
   .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; transition: color .2s; }
@@ -203,7 +202,7 @@
 
 <nav>
   <div class="container nav-inner">
-    <a href="#top" class="logo"><span class="dot">雀</span> <span data-en="XHQ Media Generator" data-zh="小红雀媒体生成">XHQ Media Generator</span></a>
+    <a href="#top" class="logo"><img src="./logo.png" alt="XHQ" class="logo-img" /> <span data-en="XHQ Media Generator" data-zh="小红雀媒体生成">XHQ Media Generator</span></a>
     <div class="nav-links">
       <a href="#features" data-en="Features" data-zh="特性">Features</a>
       <a href="#capabilities" data-en="Capabilities" data-zh="能力">Capabilities</a>
