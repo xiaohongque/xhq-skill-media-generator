@@ -48,13 +48,7 @@ say:
 > "Guide me through installing this skill: https://github.com/xiaohongque/xhq-skill-media-generator"
 
 Your agent will clone the repository into the correct skills directory and set
-everything up automatically — no manual file copying required. Then hand it your
-API key so it can authenticate its calls:
-
-```
-XHQ_API_KEY  = sk_…          # from step 1
-# XHQ_API_BASE is optional (defaults to https://app.xiaohongque.com)
-```
+everything up automatically — no manual file copying required.
 
 Once installed, the agent invokes the REST API on your behalf and 雀豆 are
 deducted from your account. Open 雀豆明细 in the web app to see every agent
