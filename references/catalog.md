@@ -28,7 +28,7 @@ are OSS URLs in `result.videos` / `result.images` / `result.audios`.
 ```json
 {
   "success": true,
-  "groups": [
+  "providers": [
     { "key": "video.seedance-2.0",      "kind": "video", "description": "Seedance 2.0 video generation" },
     { "key": "video.seedance-fast-2.0", "kind": "video", "description": "Seedance 2.0 video generation" },
     { "key": "video.seedance-mini-2.0", "kind": "video", "description": "Seedance 2.0 video generation" },
@@ -41,19 +41,19 @@ are OSS URLs in `result.videos` / `result.images` / `result.audios`.
 
 ## Video generation (group keys)
 
-| Provider (`provider`) | Description | Key params |
-| --- | --- | --- |
-| `video.seedance-2.0` | Seedance 2.0 video generation | `prompt`, `image_urls` (≤3), `video_url`, `audio_url`, `duration`, `aspect_ratio`, `resolution` |
-| `video.seedance-fast-2.0` | Seedance 2.0 fast tier | same as `video.seedance-2.0` |
-| `video.seedance-mini-2.0` | Seedance 2.0 mini tier | same as `video.seedance-2.0` |
-| `video.grok-image-1.5` | Grok Image 1.5 video generation | `prompt`, `image_urls`, `duration`, `aspect_ratio` |
+| Provider (`provider`)     | Description                     | Key params                                                                                                     |
+| --------------------------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `video.seedance-2.0`      | Seedance 2.0 video generation   | `prompt`, `image_urls` (≤3), `video_url`, `audio_url`, `duration`, `aspect_ratio`, `resolution` |
+| `video.seedance-fast-2.0` | Seedance 2.0 fast tier          | same as`video.seedance-2.0`                                                                                  |
+| `video.seedance-mini-2.0` | Seedance 2.0 mini tier          | same as`video.seedance-2.0`                                                                                  |
+| `video.grok-image-1.5`    | Grok Image 1.5 video generation | `prompt`, `image_urls`, `duration`, `aspect_ratio`                                                     |
 
 ## Image generation (group keys)
 
-| Provider (`provider`) | Description | Key params |
-| --- | --- | --- |
-| `image.gpt-image-2` | GPT-Image-2 image generation | `prompt`, `image_urls`, `size`, `resolution`, `n` |
-| `image.banana` | Banana series image generation (Gemini Flash/Pro) — model-iteration failover | `prompt`, `image_urls`, `size`, `resolution`, `n` |
+| Provider (`provider`) | Description                                                                   | Key params                                                  |
+| ----------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `image.gpt-image-2`   | GPT-Image-2 image generation                                                  | `prompt`, `image_urls`, `size`, `resolution`, `n` |
+| `image.banana`        | Banana series image generation (Gemini Flash/Pro) — model-iteration failover | `prompt`, `image_urls`, `size`, `resolution`, `n` |
 
 ## Common params
 
@@ -74,28 +74,6 @@ node scripts/run_task.js --provider video.seedance-2.0 --params '{
   "resolution": "720p"
 }'
 ```
-
-## Additional registered providers (not in `/api/v1/capabilities` yet)
-
-The following generators are valid `provider` values for `POST /api/v1/generate`
-but are **not** currently returned by `/api/v1/capabilities`. They are listed
-here for completeness; prefer the group keys above when available.
-
-### Digital human (talking avatar / portrait animation)
-
-- `digitalHuman-video` — drive a source video with audio. Params: `sourceVideoUrl`, `audioUrl`, `options` (`startSec`, `endSec`, `fps`, `advancedOptimize`). Credit `20 + 5 × durationSec`.
-- `digitalHuman-image-normal` — animate a portrait image with audio. Params: `sourceImageUrl`, `audioUrl`, `options` (`maxSide`, `fps`, `prompt`, `startTime`, `endTime`, `accelerate`). Credit `10 + 3 × durationSec`.
-- `digitalHuman-image-dynamic` — dynamic portrait from image + audio. Params: `sourceImageUrl`, `audioUrl`, `options` (`dynamic`, `longestSide`, `totalFrames`). Credit fixed `50`.
-- `digitalHuman-text-driven` — portrait + text script + voice. Params: `sourceImageUrl`, `options` (`aspectRatio`, `text`, `voiceSelect`, `emotion`, `cloneAudioUrl`). Credit `10 + 2 × durationSec`.
-- `digitalHuman-sales` — sales video from a product portrait. Params: `sourceImageUrl`, `options` (`durationSeconds`, `resolution`, `polishPrompt`, `prompt`). Credit `15 + 2 × durationSec`.
-
-### Image / video editing & utilities
-
-`garmentChange`, `hotRemake`, `detailPage`, `imageUpscale`, `lighting`,
-`outpaint`, `poseChange`, `fullAngle`, `patternPrintExtract`, `phoneSelfie`,
-`videoFaceSwap`, `videoUpscale`, `videoWatermarkRemoval`, `videoAnalyze`,
-`audioClone`. Each takes provider-specific params (see
-`libs/runninghub-providers.js`).
 
 ## Output shape (all providers)
 

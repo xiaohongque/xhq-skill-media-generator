@@ -26,7 +26,7 @@ Authorization: Bearer {XHQ_API_KEY}
 ```json
 {
   "success": true,
-  "groups": [
+  "providers": [
     { "key": "video.seedance-2.0",      "kind": "video", "description": "Seedance 2.0 video generation" },
     { "key": "video.seedance-fast-2.0", "kind": "video", "description": "Seedance 2.0 video generation" },
     { "key": "video.seedance-mini-2.0", "kind": "video", "description": "Seedance 2.0 video generation" },
@@ -39,19 +39,19 @@ Authorization: Bearer {XHQ_API_KEY}
 
 ## 视频生成（路由组键）
 
-| Provider（`provider`） | 说明 | 关键参数 |
-| --- | --- | --- |
-| `video.seedance-2.0` | Seedance 2.0 视频生成 | `prompt`, `image_urls`（≤3）, `video_url`, `audio_url`, `duration`, `aspect_ratio`, `resolution` |
-| `video.seedance-fast-2.0` | Seedance 2.0 快速档 | 同 `video.seedance-2.0` |
-| `video.seedance-mini-2.0` | Seedance 2.0 mini 档 | 同 `video.seedance-2.0` |
-| `video.grok-image-1.5` | Grok Image 1.5 视频生成 | `prompt`, `image_urls`, `duration`, `aspect_ratio` |
+| Provider（`provider`）    | 说明                    | 关键参数                                                                                                        |
+| --------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `video.seedance-2.0`      | Seedance 2.0 视频生成   | `prompt`, `image_urls`（≤3）, `video_url`, `audio_url`, `duration`, `aspect_ratio`, `resolution` |
+| `video.seedance-fast-2.0` | Seedance 2.0 快速档     | 同`video.seedance-2.0`                                                                                        |
+| `video.seedance-mini-2.0` | Seedance 2.0 mini 档    | 同`video.seedance-2.0`                                                                                        |
+| `video.grok-image-1.5`    | Grok Image 1.5 视频生成 | `prompt`, `image_urls`, `duration`, `aspect_ratio`                                                      |
 
 ## 图像生成（路由组键）
 
-| Provider（`provider`） | 说明 | 关键参数 |
-| --- | --- | --- |
-| `image.gpt-image-2` | GPT-Image-2 图像生成 | `prompt`, `image_urls`, `size`, `resolution`, `n` |
-| `image.banana` | Banana 系列图像生成（Gemini Flash/Pro）——模型迭代故障转移 | `prompt`, `image_urls`, `size`, `resolution`, `n` |
+| Provider（`provider`） | 说明                                                        | 关键参数                                                    |
+| ------------------------ | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `image.gpt-image-2`    | GPT-Image-2 图像生成                                        | `prompt`, `image_urls`, `size`, `resolution`, `n` |
+| `image.banana`         | Banana 系列图像生成（Gemini Flash/Pro）——模型迭代故障转移 | `prompt`, `image_urls`, `size`, `resolution`, `n` |
 
 ## 通用参数
 
@@ -71,26 +71,6 @@ node scripts/run_task.js --provider video.seedance-2.0 --params '{
   "resolution": "720p"
 }'
 ```
-
-## 其他已注册 provider（尚未出现在 `/api/v1/capabilities`）
-
-以下生成器是 `POST /api/v1/generate` 合法的 `provider` 值，但**当前未**由
-`/api/v1/capabilities` 返回。此处列出仅供完整参考；优先使用上面的路由组键。
-
-### 数字人（口播数字人 / 肖像动画）
-
-- `digitalHuman-video` — 用音轨驱动源视频。参数：`sourceVideoUrl`、`audioUrl`、`options`（`startSec`、`endSec`、`fps`、`advancedOptimize`）。雀豆 `20 + 5 × durationSec`。
-- `digitalHuman-image-normal` — 用音频让肖像图像动起来。参数：`sourceImageUrl`、`audioUrl`、`options`（`maxSide`、`fps`、`prompt`、`startTime`、`endTime`、`accelerate`）。雀豆 `10 + 3 × durationSec`。
-- `digitalHuman-image-dynamic` — 图像 + 音频的动态肖像。参数：`sourceImageUrl`、`audioUrl`、`options`（`dynamic`、`longestSide`、`totalFrames`）。雀豆固定 `50`。
-- `digitalHuman-text-driven` — 肖像 + 文本脚本 + 音色。参数：`sourceImageUrl`、`options`（`aspectRatio`、`text`、`voiceSelect`、`emotion`、`cloneAudioUrl`）。雀豆 `10 + 2 × durationSec`。
-- `digitalHuman-sales` — 从商品肖像生成销售视频。参数：`sourceImageUrl`、`options`（`durationSeconds`、`resolution`、`polishPrompt`、`prompt`）。雀豆 `15 + 2 × durationSec`。
-
-### 图像 / 视频编辑与工具
-
-`garmentChange`、`hotRemake`、`detailPage`、`imageUpscale`、`lighting`、
-`outpaint`、`poseChange`、`fullAngle`、`patternPrintExtract`、`phoneSelfie`、
-`videoFaceSwap`、`videoUpscale`、`videoWatermarkRemoval`、`videoAnalyze`、
-`audioClone`。每个 provider 有专属参数（见 `libs/runninghub-providers.js`）。
 
 ## 输出形态（所有 provider）
 
