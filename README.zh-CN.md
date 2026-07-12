@@ -38,12 +38,18 @@
 
 ### 二、接入你的智能体
 
+最简单的安装方式，是让智能体自己来完成。打开你的智能体应用（CodeBuddy、Claude、Cursor 或任意兼容客户端），直接对它说：
+
+> "Guide me through installing this skill: https://github.com/xiaohongque/xhq-skill-media-generator"
+
+智能体会自动把仓库克隆到正确的技能目录并完成配置——无需手动复制文件。然后，把你的 API Key 交给它，让它能够鉴权调用：
+
 ```
 XHQ_API_KEY  = sk_…          # 来自第一步
 # XHQ_API_BASE 可选（默认 https://app.xiaohongque.com）
 ```
 
-在本技能所服务的智能体中安装本技能，智能体即可调用 REST API，雀豆 从你的账户中扣除。打开网页端的 雀豆明细 即可看到每一次智能体的消耗。
+安装完成后，智能体会代你调用 REST API，雀豆 从你的账户中扣除。打开网页端的 雀豆明细 即可看到每一次智能体的消耗。
 
 ### 三、安全管理
 
