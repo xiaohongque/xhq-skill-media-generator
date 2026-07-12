@@ -24,23 +24,38 @@ which params**. This skill supplies that knowledge in a plain, portable form,
 plus a runnable helper script so agents that execute code don't have to
 re-derive the submit/poll flow each time.
 
-## How a user gets started (the flow)
+## How a user gets started
+
+### Step 1 — Create an API Key in the product
+
+![Create API Key](https://vid-xhq.xiaohongque.com/6957e1d606646d6d76a7a482/images/6b3267de9eb32f0d724025c440ec7b8a.jpg)
+
+1. Log into the [XHQ AI web app](https://www.xiaohongque.com) (or sign up for a free account first).
+2. Go to **Settings → Account → API Keys**.
+3. Click **"+ Create Key"** and enter a recognizable name (e.g. "My Script", "Third-party Integration"). Default permissions include:
+   - `generate`
+   - `task query`
+4. After creating, the system shows the **plaintext key only once** (looks like `sk_…`). Copy and store it safely immediately — it cannot be viewed again after closing.
+
+> The list shows only a masked prefix (e.g. `xhq_sk_••••••••`), status (active / revoked), permission tags, and created / last-used time.
+
+### Step 2 — Wire it into your agent
 
 ```
-1. User visits https://www.xiaohongque.com and logs into the xhq web app
-2. User opens Settings → "API Keys" → clicks "生成 API Key"
-3. Web app mints a new key → returns a plaintext key ONCE
-4. User copies the key (sk_…)
-5. User installs this skill in their agent and sets:
-     XHQ_API_KEY  = sk_…
-     # XHQ_API_BASE is optional (defaults to https://app.xiaohongque.com)
-6. Agent calls the REST API; 雀豆 are deducted from the user's account
-7. User opens 雀豆明细 in the web app → sees every agent consumption
+XHQ_API_KEY  = sk_…          # from step 1
+# XHQ_API_BASE is optional (defaults to https://app.xiaohongque.com)
 ```
 
-The API key simply resolves back to the same `_User` whose 雀豆 are already
-deducted by the backend, so **no billing change is needed** — consumption shows
-up in 雀豆明细 automatically.
+Install this skill in your agent, then the agent calls the REST API and 雀豆 are
+deducted from your account. Open 雀豆明细 in the web app to see every agent
+consumption.
+
+### Security management
+
+- **A key equals your account**: never share it or commit it to a repo.
+- **Revoke anytime**: click "Revoke" in the key list to invalidate it immediately. If you suspect a leak, revoke first, then create a new one.
+- **Least privilege**: the default scope is only `generate` + `task query`, following the principle of least privilege.
+- The key resolves back to the same account, so 雀豆 consumption appears automatically in 雀豆明细 — no extra billing setup needed.
 
 ## Layout
 
