@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>XHQ Media Generator — Give any AI agent media superpowers</title>
-<meta name="description" content="A portable, agent-agnostic skill that teaches any AI agent to generate video, images, digital humans and edit media through one simple REST API." />
+<title>XHQ Media Generator Skill — Turn one product photo into store-ready content</title>
+<meta name="description" content="An AI media studio for online sellers. Snap a product photo, tell your assistant what you want, and get listing images, social videos, and AI spokespeople — no camera, no editor, no designer." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -93,17 +93,16 @@
   .hero p.sub { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); max-width: 720px; margin: 0 auto 34px; }
   .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-  /* TERMINAL MOCK */
-  .terminal {
-    max-width: 760px; margin: 54px auto 0; border-radius: 14px; overflow: hidden;
-    border: 1px solid var(--card-border); background: #0e0e16; text-align: left;
-    box-shadow: 0 30px 80px rgba(0,0,0,.5);
-  }
-  .terminal .bar { display: flex; gap: 7px; padding: 13px 16px; background: #16161f; border-bottom: 1px solid var(--card-border); }
-  .terminal .bar i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
-  .terminal .bar i:nth-child(1){ background:#ff5f56;} .terminal .bar i:nth-child(2){ background:#ffbd2e;} .terminal .bar i:nth-child(3){ background:#27c93f;}
-  .terminal pre { margin: 0; padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.7; color: #d6d6e0; overflow-x: auto; }
-  .terminal .c { color: var(--brand-2); } .terminal .g { color: #6ee7b7; } .terminal .m { color: var(--accent); } .terminal .x { color: var(--muted); }
+  /* SHOWCASE */
+  .showcase { display: flex; align-items: stretch; justify-content: center; gap: 16px; flex-wrap: wrap; max-width: 920px; margin: 54px auto 0; }
+  .showcase .src { width: 200px; padding: 20px; border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--card); text-align: center; display: flex; flex-direction: column; justify-content: center; }
+  .showcase .src .ph { width: 100%; aspect-ratio: 1/1; border-radius: 12px; background: linear-gradient(135deg, #2a2233, #3a2733); display: grid; place-items: center; font-size: 42px; margin-bottom: 12px; }
+  .showcase .src .lbl { font-size: 14px; color: var(--muted); font-weight: 600; }
+  .showcase .arrow { display: flex; align-items: center; font-size: 30px; color: var(--muted); }
+  .showcase .outs { display: flex; gap: 14px; flex-wrap: wrap; }
+  .showcase .out { width: 152px; padding: 18px; border: 1px solid var(--card-border); border-radius: var(--radius); background: var(--card); text-align: center; }
+  .showcase .out .ph2 { width: 100%; aspect-ratio: 1/1; border-radius: 12px; display: grid; place-items: center; font-size: 34px; margin-bottom: 10px; background: rgba(255,255,255,.04); }
+  .showcase .out .lbl { font-size: 14px; font-weight: 600; }
 
   /* SECTION */
   section { padding: 78px 0; }
@@ -111,13 +110,6 @@
   .sec-head .eyebrow { color: var(--brand); font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
   .sec-head h2 { font-size: clamp(26px, 4vw, 38px); margin: 12px 0 12px; font-weight: 800; letter-spacing: -0.01em; }
   .sec-head p { color: var(--muted); font-size: 17px; }
-
-  /* AGENT ROW */
-  .agents { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
-  .agents .chip {
-    border: 1px solid var(--card-border); background: var(--card); padding: 10px 18px;
-    border-radius: 999px; font-weight: 600; font-size: 14px; color: var(--text);
-  }
 
   /* CARDS GRID */
   .grid { display: grid; gap: 20px; }
@@ -144,6 +136,14 @@
   .cap ul li { margin: 6px 0; }
   .cap code { font-family: 'JetBrains Mono', monospace; color: var(--brand-2); background: rgba(255,138,61,.12); padding: 1px 6px; border-radius: 6px; font-size: 13px; }
 
+  /* EXAMPLES */
+  .examples-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .example { border: 1px solid var(--card-border); border-radius: var(--radius); padding: 22px; background: var(--card); transition: border-color .2s, background .2s; }
+  .example:hover { border-color: rgba(255,77,94,.5); background: rgba(255,255,255,.06); }
+  .example .k { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); margin-bottom: 10px; font-weight: 600; }
+  .example .p { font-weight: 600; font-size: 15px; margin: 0 0 8px; }
+  .example .r { color: var(--muted); font-size: 14px; margin: 0; }
+
   /* STEPS */
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; }
   .step { border: 1px solid var(--card-border); background: var(--card); border-radius: var(--radius); padding: 28px; position: relative; }
@@ -162,13 +162,14 @@
   tbody tr:last-child td { border-bottom: none; }
   tbody tr:hover { background: rgba(255,255,255,.03); }
 
-  /* QUICKSTART */
-  .code-block { position: relative; border: 1px solid var(--card-border); border-radius: 14px; background: #0e0e16; overflow: hidden; }
-  .code-block .bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: #16161f; border-bottom: 1px solid var(--card-border); }
-  .code-block .bar span { color: var(--muted); font-size: 13px; }
-  .copy { background: var(--card); border: 1px solid var(--card-border); color: var(--text); border-radius: 8px; padding: 5px 12px; font-size: 12px; cursor: pointer; font-weight: 600; }
-  .copy:hover { border-color: var(--brand); }
-  .code-block pre { margin: 0; padding: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13.5px; line-height: 1.7; color: #d6d6e0; overflow-x: auto; }
+  /* QUICKSTART / CHAT */
+  .chat { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; text-align: left; }
+  .msg { border: 1px solid var(--card-border); border-radius: 14px; padding: 14px 18px; background: var(--card); }
+  .msg .who { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+  .msg.user { border-left: 3px solid var(--accent); }
+  .msg.agent { border-left: 3px solid var(--brand); }
+  .msg p { margin: 0; font-size: 15px; }
+  .msg code { font-family: 'JetBrains Mono', monospace; color: var(--brand-2); background: rgba(255,138,61,.12); padding: 1px 6px; border-radius: 6px; font-size: 13px; word-break: break-all; }
 
   /* CALLOUT */
   .callout { border: 1px solid var(--card-border); border-left: 3px solid var(--brand); background: var(--card); border-radius: 14px; padding: 24px 26px; }
@@ -194,7 +195,8 @@
 
   @media (max-width: 860px) {
     .nav-links a:not(.lang-toggle) { display: none; }
-    .grid-3, .grid-2, .steps { grid-template-columns: 1fr; }
+    .grid-3, .grid-2, .steps, .examples-grid { grid-template-columns: 1fr; }
+    .showcase .arrow { display: none; }
   }
 </style>
 </head>
@@ -202,12 +204,13 @@
 
 <nav>
   <div class="container nav-inner">
-    <a href="#top" class="logo"><img src="./logo.png" alt="XHQ" class="logo-img" /> <span data-en="XHQ Skill" data-zh="小红雀 Skill">XHQ Skill</span></a>
+    <a href="#top" class="logo"><img src="./logo.png" alt="XHQ" class="logo-img" /> <span data-en="XHQ Media Skill" data-zh="小红雀 Media Skill">XHQ Media Skill</span></a>
     <div class="nav-links">
-      <a href="#features" data-en="Features" data-zh="特性">Features</a>
-      <a href="#capabilities" data-en="Capabilities" data-zh="能力">Capabilities</a>
+      <a href="#features" data-en="Features" data-zh="能力">Features</a>
+      <a href="#examples" data-en="Examples" data-zh="示例">Examples</a>
+      <a href="#capabilities" data-en="What it makes" data-zh="能创作什么">What it makes</a>
       <a href="#how" data-en="How it works" data-zh="使用方式">How it works</a>
-      <a href="#quickstart" data-en="Quickstart" data-zh="快速开始">Quickstart</a>
+      <a href="#quickstart" data-en="Chat" data-zh="对话">Chat</a>
       <a href="https://github.com/xiaohongque/xhq-skill-media-generator/blob/main/README.md" data-en="Docs" data-zh="文档">Docs</a>
       <button class="lang-toggle" id="langBtn">中文</button>
     </div>
@@ -216,25 +219,35 @@
 
 <header class="hero" id="top">
   <div class="container">
-    <div class="badge"><span class="pulse"></span><span data-en="Agent-agnostic · REST API · Zero SDK" data-zh="与智能体无关 · REST API · 零 SDK">Agent-agnostic · REST API · Zero SDK</span></div>
-    <h1 data-en="Give any AI agent<br><span class='grad-text'>media superpowers</span>" data-zh="让任意 AI 智能体<br><span class='grad-text'>拥有媒体创作力</span>">Give any AI agent<br><span class="grad-text">media superpowers</span></h1>
-    <p class="sub" data-en="A portable, agent-agnostic skill that teaches CodeBuddy, Claude, Cursor and any agent to generate video, images, digital humans and edit media through one simple REST API — secured by a Bearer API key." data-zh="一个可移植、与智能体无关的技能，教会 CodeBuddy、Claude、Cursor 及任意智能体，通过一套简单的 REST API（Bearer API Key 鉴权）生成视频、图像、数字人并编辑素材。">A portable, agent-agnostic skill that teaches CodeBuddy, Claude, Cursor and any agent to generate video, images, digital humans and edit media through one simple REST API — secured by a Bearer API key.</p>
+    <div class="badge"><span class="pulse"></span><span data-en="Online sellers · Content marketing · AI digital humans" data-zh="电商卖家 · 内容营销 · AI 数字人">Online sellers · Content marketing · AI digital humans</span></div>
+    <h1 data-en="Turn one product photo into<br><span class='grad-text'>store-ready content</span>" data-zh="一张产品照，<br><span class='grad-text'>变成成片可发的卖货素材</span>">Turn one product photo into<br><span class="grad-text">store-ready content</span></h1>
+    <p class="sub" data-en="Snap a photo, tell your AI assistant what you want in plain words, and get polished listing images, scroll-stopping short videos, and AI spokespeople — no camera, no editor, no designer." data-zh="拍张产品照，用日常大白话告诉 AI 助手你想要什么，就能拿到精修详情图、刷屏短视频和 AI 数字人——不用摄影机、不用剪辑、不用请设计师。">Snap a photo, tell your AI assistant what you want in plain words, and get polished listing images, scroll-stopping short videos, and AI spokespeople — no camera, no editor, no designer.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="https://www.xiaohongque.com" data-en="Get an API Key" data-zh="获取 API Key">Get an API Key</a>
+      <a class="btn btn-primary" href="https://www.xiaohongque.com" data-en="Get a free API Key" data-zh="免费获取 API Key">Get a free API Key</a>
+      <a class="btn btn-ghost" href="#examples" data-en="See examples" data-zh="看示例">See examples</a>
       <a class="btn btn-ghost" href="https://github.com/xiaohongque/xhq-skill-media-generator" data-en="View on GitHub" data-zh="在 GitHub 查看">View on GitHub</a>
-      <a class="btn btn-ghost" href="https://github.com/xiaohongque/xhq-skill-media-generator/blob/main/README.md" data-en="Read the Docs" data-zh="阅读文档">Read the Docs</a>
     </div>
 
-    <div class="terminal reveal">
-      <div class="bar"><i></i><i></i><i></i></div>
-      <pre><span class="x"># 1 · submit a task</span>
-<span class="g">POST</span> https://app.xiaohongque.com/api/v1/generate
-<span class="m">Authorization:</span> Bearer sk_••••••••
-<span class="c">{ "provider": "video.seedance-2.0", "prompt": "calm ocean wave" }</span>
-
-<span class="x"># 2 · poll until done</span>
-<span class="g">GET</span> https://app.xiaohongque.com/api/v1/tasks/&lt;taskId&gt;
-<span class="c">→ { "status": "succeeded", "result": { "videos": [...] } }</span></pre>
+    <div class="showcase reveal">
+      <div class="src">
+        <div class="ph">📦</div>
+        <div class="lbl" data-en="Your product photo" data-zh="你的产品照">Your product photo</div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="outs">
+        <div class="out">
+          <div class="ph2">🖼️</div>
+          <div class="lbl" data-en="Listing images" data-zh="上架详情图">Listing images</div>
+        </div>
+        <div class="out">
+          <div class="ph2">🎬</div>
+          <div class="lbl" data-en="Short videos" data-zh="短视频">Short videos</div>
+        </div>
+        <div class="out">
+          <div class="ph2">🧑‍💼</div>
+          <div class="lbl" data-en="AI spokespeople" data-zh="AI 数字人">AI spokespeople</div>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -242,55 +255,95 @@
 <section id="features">
   <div class="container">
     <div class="sec-head reveal">
-      <div class="eyebrow" data-en="Why this skill" data-zh="为何需要它">Why this skill</div>
-      <h2 data-en="Built for any agent, not just one" data-zh="为任意智能体而生，而非某一个">Built for any agent, not just one</h2>
-      <p data-en="The backend exposes a large catalog of model capabilities behind one uniform interface. The only thing an agent needs to know is which provider to call and with what params." data-zh="后端通过一套统一接口暴露了大量模型能力。智能体只需知道调用哪个 provider、传入哪些参数。">The backend exposes a large catalog of model capabilities behind one uniform interface. The only thing an agent needs to know is which provider to call and with what params.</p>
-      <div class="agents">
-        <span class="chip">CodeBuddy</span><span class="chip">Codex</span><span class="chip">Claude</span><span class="chip">Cursor</span><span class="chip">Custom agent</span>
-      </div>
+      <div class="eyebrow" data-en="Built for sellers" data-zh="为卖家而生">Built for sellers</div>
+      <h2 data-en="From a photo to a finished campaign" data-zh="从一张照片，到成片的活动素材">From a photo to a finished campaign</h2>
+      <p data-en="You describe the result you imagine. The AI assistant handles production for your shop — images, video, and digital humans, all from one photo." data-zh="你描述想要的效果，AI 助手替你完成店铺的内容生产——图片、视频、数字人，全从一张照片开始。">You describe the result you imagine. The AI assistant handles production for your shop — images, video, and digital humans, all from one photo.</p>
     </div>
 
     <div class="grid grid-3">
       <div class="card reveal">
-        <div class="ico">🔌</div>
-        <h3 data-en="Agent-agnostic" data-zh="与智能体无关">Agent-agnostic</h3>
-        <p data-en="Plain, portable instructions any agent can consume — no proprietary SDK, no user session required." data-zh="纯文本、可移植的说明，任意智能体均可消费——无需专有 SDK，也无需用户会话。">Plain, portable instructions any agent can consume — no proprietary SDK, no user session required.</p>
+        <div class="ico">🖼️</div>
+        <h3 data-en="Listing images" data-zh="上架详情图">Listing images</h3>
+        <p data-en="Drop in a product photo and get clean white-background main images, premium lifestyle shots, and on-model looks." data-zh="丢一张产品照，得到干净白底主图、高级感场景图，以及模特上身图。">Drop in a product photo and get clean white-background main images, premium lifestyle shots, and on-model looks.</p>
       </div>
       <div class="card reveal">
-        <div class="ico">🌐</div>
-        <h3 data-en="One REST API" data-zh="一套 REST API">One REST API</h3>
-        <p data-en="POST /api/v1/generate then GET /api/v1/tasks/:taskId. Same flow for every capability." data-zh="POST /api/v1/generate，再 GET /api/v1/tasks/:taskId。每种能力都用相同流程。">POST /api/v1/generate then GET /api/v1/tasks/:taskId. Same flow for every capability.</p>
+        <div class="ico">🎬</div>
+        <h3 data-en="Animate your photos" data-zh="让产品动起来">Animate your photos</h3>
+        <p data-en="Turn a still photo into a short video — rotate, flicker, steam, slow zoom — ready for ads and reels." data-zh="把静止照变成短视频：旋转、火苗跳动、热气升腾、慢推近——适合投广告和 reels。">Turn a still photo into a short video — rotate, flicker, steam, slow zoom — ready for ads and reels.</p>
       </div>
       <div class="card reveal">
-        <div class="ico">⚡</div>
-        <h3 data-en="Zero setup" data-zh="零配置">Zero setup</h3>
-        <p data-en="Just HTTP + a Bearer key. A runnable Node script handles submit → poll → result for you." data-zh="只需 HTTP + 一个 Bearer Key。可运行的 Node 脚本帮你完成「提交 → 轮询 → 结果」。">Just HTTP + a Bearer key. A runnable Node script handles submit → poll → result for you.</p>
+        <div class="ico">📱</div>
+        <h3 data-en="Social short videos" data-zh="社媒短视频">Social short videos</h3>
+        <p data-en="Vertical, trend-ready clips for TikTok / Reels / 抖音 — without ever opening an editor." data-zh="竖屏、跟潮流的短视频，发抖音/TikTok/Reels 都不用打开剪辑软件。">Vertical, trend-ready clips for TikTok / Reels / 抖音 — without ever opening an editor.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ico">🧑‍💼</div>
+        <h3 data-en="AI spokespeople" data-zh="AI 数字人">AI spokespeople</h3>
+        <p data-en="A realistic digital presenter introduces and sells your product — no camera, no actor, no studio." data-zh="逼真的虚拟主播替你介绍、卖货——不用摄影机、不用请演员、不用搭棚。">A realistic digital presenter introduces and sells your product — no camera, no actor, no studio.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ico">🗂️</div>
+        <h3 data-en="Full campaigns" data-zh="整套 campaign">Full campaigns</h3>
+        <p data-en="One prompt, a coordinated set of images + videos for your whole promotion — hero shot to clips." data-zh="一句话，整波活动需要的图片+视频全齐——从主视觉到成片短视频。">One prompt, a coordinated set of images + videos for your whole promotion — hero shot to clips.</p>
       </div>
       <div class="card reveal">
         <div class="ico">💎</div>
-        <h3 data-en="Usage-based billing" data-zh="按量计费">Usage-based billing</h3>
-        <p data-en="The key maps to your account; 雀豆 are deducted automatically per task and shown in 雀豆明细." data-zh="Key 直接映射到你的账户；每次任务自动扣除雀豆，并展示在「雀豆明细」中。">The key maps to your account; 雀豆 are deducted automatically per task and shown in 雀豆明细.</p>
-      </div>
-      <div class="card reveal">
-        <div class="ico">🛡️</div>
-        <h3 data-en="Least privilege" data-zh="最小权限">Least privilege</h3>
-        <p data-en="Keys default to generate + task-query scope only. Revoke anytime from the web app." data-zh="Key 默认仅含「生成 + 任务查询」权限。可随时在网页端撤销。">Keys default to generate + task-query scope only. Revoke anytime from the web app.</p>
-      </div>
-      <div class="card reveal">
-        <div class="ico">📦</div>
-        <h3 data-en="Extensible" data-zh="可扩展">Extensible</h3>
-        <p data-en="Discover providers live via GET /api/v1/capabilities; append to the catalog as new models ship." data-zh="通过 GET /api/v1/capabilities 实时发现 provider；新模型上线即可追加到目录。">Discover providers live via GET /api/v1/capabilities; append to the catalog as new models ship.</p>
+        <h3 data-en="Pay per use" data-zh="按量计费">Pay per use</h3>
+        <p data-en="雀豆 are deducted automatically per task. No subscription, no setup — just create and sell." data-zh="每次任务自动扣雀豆。没有订阅、无需配置——只管创作、只管卖货。">雀豆 are deducted automatically per task. No subscription, no setup — just create and sell.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="capabilities" style="background:var(--bg-soft);">
+<section id="examples" style="background:var(--bg-soft);">
   <div class="container">
     <div class="sec-head reveal">
-      <div class="eyebrow" data-en="Capabilities" data-zh="能力">Capabilities</div>
-      <h2 data-en="What your agent can create" data-zh="你的智能体能创作什么">What your agent can create</h2>
-      <p data-en="Each capability is a routing group key passed to POST /api/v1/generate. The backend picks the best available generator for you." data-zh="每种能力都是一个路由组 key，传给 POST /api/v1/generate。后端会为你选择最优的底层生成器。">Each capability is a routing group key passed to POST /api/v1/generate. The backend picks the best available generator for you.</p>
+      <div class="eyebrow" data-en="Examples" data-zh="示例">Examples</div>
+      <h2 data-en="Just say it — in plain words" data-zh="用大白话告诉它就行">Just say it — in plain words</h2>
+      <p data-en="No prompts to learn, no tools to master. Show a photo, describe the result, and your assistant does the rest." data-zh="不用学提示词，不用学工具。给张照片、描述想要的效果，剩下的交给智能助手。">No prompts to learn, no tools to master. Show a photo, describe the result, and your assistant does the rest.</p>
+    </div>
+
+    <div class="examples-grid">
+      <div class="example reveal">
+        <div class="k" data-en="Listing images · 详情图" data-zh="Listing images · 详情图">Listing images · 详情图</div>
+        <p class="p" data-en="“Take this photo of my mug and put it on a clean white background for my listing.”" data-zh="「拿这张马克杯的照片，换成干净的白底，做成主图。」">“Take this photo of my mug and put it on a clean white background for my listing.”</p>
+        <p class="r" data-en="→ A crisp, professional main image ready for your shop." data-zh="→ 一张清爽、专业的商品主图，直接可用。">→ A crisp, professional main image ready for your shop.</p>
+      </div>
+      <div class="example reveal">
+        <div class="k" data-en="Listing images · 详情图" data-zh="Listing images · 详情图">Listing images · 详情图</div>
+        <p class="p" data-en="“Make my skincare bottle look premium on a marble countertop with soft daylight.”" data-zh="「让我的护肤瓶放在大理石台面上、柔和自然光，看起来高级一点。」">“Make my skincare bottle look premium on a marble countertop with soft daylight.”</p>
+        <p class="r" data-en="→ A high-end lifestyle shot that makes the product look expensive." data-zh="→ 一张高级感的场景图，让产品显得更值钱。">→ A high-end lifestyle shot that makes the product look expensive.</p>
+      </div>
+      <div class="example reveal">
+        <div class="k" data-en="Social video · 社媒短视频" data-zh="Social video · 社媒短视频">Social video · 社媒短视频</div>
+        <p class="p" data-en="“Make a 5-second video of my perfume bottle slowly rotating with sparkling light.”" data-zh="「做个 5 秒的视频，我的香水瓶缓缓旋转，带点闪光。」">“Make a 5-second video of my perfume bottle slowly rotating with sparkling light.”</p>
+        <p class="r" data-en="→ An eye-catching clip perfect for ads or reels." data-zh="→ 一段吸睛的短片，特别适合投广告或发 reels。">→ An eye-catching clip perfect for ads or reels.</p>
+      </div>
+      <div class="example reveal">
+        <div class="k" data-en="Social video · 社媒短视频" data-zh="Social video · 社媒短视频">Social video · 社媒短视频</div>
+        <p class="p" data-en="“Turn my handbag photo into a vertical clip with a slow zoom-in, luxury mood.”" data-zh="「把我的手袋照片做成竖屏视频，慢慢推近，走奢华风。」">“Turn my handbag photo into a vertical clip with a slow zoom-in, luxury mood.”</p>
+        <p class="r" data-en="→ A tall, social-media-ready video for TikTok / Reels / 抖音." data-zh="→ 一段适合发抖音/TikTok/Reels 的竖屏视频。">→ A tall, social-media-ready video for TikTok / Reels / 抖音.</p>
+      </div>
+      <div class="example reveal">
+        <div class="k" data-en="AI spokesperson · 数字人" data-zh="AI spokesperson · 数字人">AI spokesperson · 数字人</div>
+        <p class="p" data-en="“I'd like this person to introduce my skincare set and explain the benefits.”" data-zh="「我想让这个人来介绍我的护肤套装，讲讲它的好处。」">“I'd like this person to introduce my skincare set and explain the benefits.”</p>
+        <p class="r" data-en="→ A talking video where a realistic digital presenter shows and explains your product." data-zh="→ 一段数字人口播视频，由逼真的虚拟主播展示并讲解你的产品。">→ A talking video where a realistic digital presenter shows and explains your product.</p>
+      </div>
+      <div class="example reveal">
+        <div class="k" data-en="Full campaign · 整套活动" data-zh="Full campaign · 整套活动">Full campaign · 整套活动</div>
+        <p class="p" data-en="“Make a festive holiday promo: a hero image plus three short clips for my gift box.”" data-zh="「做一套节日促销：一张主视觉图，再加三条我的礼盒短视频。」">“Make a festive holiday promo: a hero image plus three short clips for my gift box.”</p>
+        <p class="r" data-en="→ A coordinated set of posts — images and videos — for the whole campaign." data-zh="→ 一组协调的素材——图片加视频——覆盖整波活动。">→ A coordinated set of posts — images and videos — for the whole campaign.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="capabilities">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="eyebrow" data-en="What it makes" data-zh="能创作什么">What it makes</div>
+      <h2 data-en="What your assistant can create for your shop" data-zh="你的智能体能为店铺创作什么">What your assistant can create for your shop</h2>
+      <p data-en="Under the hood, each capability is a routing-group key passed to one REST API. The backend picks the best available generator — you only say what you want." data-zh="底层每种能力都是一个路由组 key，传给同一套 REST API。后端会为你选择最优生成器——你只需说想要什么。">Under the hood, each capability is a routing-group key passed to one REST API. The backend picks the best available generator — you only say what you want.</p>
     </div>
 
     <div class="grid grid-2">
@@ -332,40 +385,41 @@
   </div>
 </section>
 
-<section id="how">
+<section id="how" style="background:var(--bg-soft);">
   <div class="container">
     <div class="sec-head reveal">
       <div class="eyebrow" data-en="How it works" data-zh="使用方式">How it works</div>
-      <h2 data-en="From zero to first render in 3 steps" data-zh="三步，从零到首次生成">From zero to first render in 3 steps</h2>
+      <h2 data-en="Three steps to your first asset" data-zh="三步，拿到你的第一段素材">Three steps to your first asset</h2>
+      <p data-en="Built for sellers, not just developers. If you can install a skill into your AI assistant, you can run the whole studio." data-zh="为卖家而设计，不只是给开发者。只要能把 Skill 装进你的 AI 助手，整套工作室就跑起来了。">Built for sellers, not just developers. If you can install a skill into your AI assistant, you can run the whole studio.</p>
     </div>
 
     <div class="steps">
       <div class="step reveal">
         <div class="num">1</div>
-        <h3 data-en="Create an API Key" data-zh="创建 API Key">Create an API Key</h3>
+        <h3 data-en="Get a free API Key" data-zh="获取免费 API Key">Get a free API Key</h3>
         <p data-en="Log into xiaohongque.com → Settings → Account → API Keys → “+ Create Key”. Copy the one-time sk_… key." data-zh="登录 xiaohongque.com → 设置 → 账户 → API 密钥 →「+ 创建密钥」。复制仅展示一次的 sk_… 密钥。">Log into xiaohongque.com → Settings → Account → API Keys → “+ Create Key”. Copy the one-time sk_… key.</p>
         <img class="shot" src="https://vid-xhq.xiaohongque.com/6957e1d606646d6d76a7a482/images/6b3267de9eb32f0d724025c440ec7b8a.jpg" alt="Create API Key" />
       </div>
       <div class="step reveal">
         <div class="num">2</div>
-        <h3 data-en="Install the skill" data-zh="安装技能">Install the skill</h3>
-        <p data-en="Drop the skill folder under .codebuddy/skills/ (or ~/.codebuddy/skills/) and set XHQ_API_KEY. Or reference SKILL.md from any AGENTS.md." data-zh="将技能文件夹放到 .codebuddy/skills/（或 ~/.codebuddy/skills/）并设置 XHQ_API_KEY。也可从任意 AGENTS.md 引用 SKILL.md。">Drop the skill folder under .codebuddy/skills/ (or ~/.codebuddy/skills/) and set XHQ_API_KEY. Or reference SKILL.md from any AGENTS.md.</p>
+        <h3 data-en="Drop the skill into your agent" data-zh="把 Skill 装进智能体">Drop the skill into your agent</h3>
+        <p data-en="Place the skill folder under .codebuddy/skills/ and set XHQ_API_KEY. Or just ask your agent to install it for you." data-zh="把技能文件夹放到 .codebuddy/skills/ 下并设置 XHQ_API_KEY。或者干脆让你的智能体帮你装。">Place the skill folder under .codebuddy/skills/ and set XHQ_API_KEY. Or just ask your agent to install it for you.</p>
       </div>
       <div class="step reveal">
         <div class="num">3</div>
-        <h3 data-en="Let the agent generate" data-zh="让智能体生成">Let the agent generate</h3>
-        <p data-en="Ask your agent to make a video / image / digital human. It submits, polls, and returns OSS URLs — 雀豆 deducted automatically." data-zh="让你的智能体生成视频 / 图像 / 数字人。它提交、轮询并返回 OSS URL——雀豆自动扣除。">Ask your agent to make a video / image / digital human. It submits, polls, and returns OSS URLs — 雀豆 deducted automatically.</p>
+        <h3 data-en="Tell it what to make" data-zh="开口说需求">Tell it what to make</h3>
+        <p data-en="Show a product photo and describe the result. It submits, generates, and hands you OSS URLs — 雀豆 deducted automatically." data-zh="给张产品照，描述想要的效果。它提交、生成并返回 OSS URL——雀豆自动扣除。">Show a product photo and describe the result. It submits, generates, and hands you OSS URLs — 雀豆 deducted automatically.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="catalog" style="background:var(--bg-soft);">
+<section id="catalog">
   <div class="container">
     <div class="sec-head reveal">
       <div class="eyebrow" data-en="Provider catalog" data-zh="Provider 目录">Provider catalog</div>
       <h2 data-en="Live routing-group keys" data-zh="实时路由组 Key">Live routing-group keys</h2>
-      <p data-en="The exact keys returned by GET /api/v1/capabilities (public, no key). Pass a key as provider to POST /api/v1/generate." data-zh="GET /api/v1/capabilities（公开，无需 Key）返回的 key。将其作为 provider 传给 POST /api/v1/generate。">The exact keys returned by GET /api/v1/capabilities (public, no key). Pass a key as provider to POST /api/v1/generate.</p>
+      <p data-en="For developers and agents: the exact keys returned by GET /api/v1/capabilities (public, no key). Pass a key as provider to POST /api/v1/generate." data-zh="给开发者和智能体：GET /api/v1/capabilities（公开，无需 Key）返回的 key。将其作为 provider 传给 POST /api/v1/generate。">For developers and agents: the exact keys returned by GET /api/v1/capabilities (public, no key). Pass a key as provider to POST /api/v1/generate.</p>
     </div>
     <div class="table-wrap reveal">
       <table>
@@ -383,26 +437,27 @@
   </div>
 </section>
 
-<section id="quickstart">
+<section id="quickstart" style="background:var(--bg-soft);">
   <div class="container">
     <div class="sec-head reveal">
-      <div class="eyebrow" data-en="Quickstart" data-zh="快速开始">Quickstart</div>
-      <h2 data-en="Run your first task" data-zh="运行你的第一个任务">Run your first task</h2>
-      <p data-en="scripts/run_task.js does submit + polling in one shot. Node 18+, zero dependencies." data-zh="scripts/run_task.js 一次性完成「提交 + 轮询」。Node 18+，零依赖。">scripts/run_task.js does submit + polling in one shot. Node 18+, zero dependencies.</p>
+      <div class="eyebrow" data-en="No code needed" data-zh="无需写代码">No code needed</div>
+      <h2 data-en="Just chat with your agent" data-zh="直接跟智能体对话就行">Just chat with your agent</h2>
+      <p data-en="This is a skill your agent app calls — you never run scripts. Show a photo, say what you want, and the agent uses the skill to deliver it." data-zh="这是你的智能体应用会调用的一个 Skill——你从不需要跑脚本。给张照片、说想要什么，智能体就会用这个 Skill 把结果交给你。">This is a skill your agent app calls — you never run scripts. Show a photo, say what you want, and the agent uses the skill to deliver it.</p>
     </div>
-    <div class="code-block reveal">
-      <div class="bar"><span data-en="bash" data-zh="bash">bash</span><button class="copy" id="copyBtn" data-en="Copy" data-zh="复制">Copy</button></div>
-      <pre id="codeText">export XHQ_API_KEY="sk_..."                # the key you created
-# XHQ_API_BASE is optional; defaults to https://app.xiaohongque.com
-
-node scripts/run_task.js \
-  --provider video.seedance-2.0 \
-  --params '{"prompt":"A calm ocean wave rolling toward shore","image_urls":["https://.../ref.jpg"],"duration":5,"aspect_ratio":"16:9"}'</pre>
+    <div class="chat reveal">
+      <div class="msg user">
+        <span class="who" data-en="You" data-zh="你">You</span>
+        <p data-en="Take this photo of my mug and put it on a clean white background for my listing." data-zh="拿这张马克杯的照片，换成干净的白底，做成主图。">Take this photo of my mug and put it on a clean white background for my listing.</p>
+      </div>
+      <div class="msg agent">
+        <span class="who" data-en="Agent · XHQ Media Skill" data-zh="智能体 · XHQ Media Skill">Agent · XHQ Media Skill</span>
+        <p data-en="Calling the XHQ Media Skill to generate your listing image… ✅ Done. Here's your white-background main image: <code>https://cdn.xiaohongque.com/…/mug-listing.png</code>" data-zh="正在调用 XHQ Media Skill 生成你的详情图……✅ 完成。这是你的白底主图：<code>https://cdn.xiaohongque.com/…/mug-listing.png</code>">Calling the XHQ Media Skill to generate your listing image… ✅ Done. Here's your white-background main image: <code>https://cdn.xiaohongque.com/…/mug-listing.png</code></p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="security" style="background:var(--bg-soft);">
+<section id="security">
   <div class="container">
     <div class="callout reveal">
       <h3 data-en="🔐 Security & billing" data-zh="🔐 安全与计费">🔐 Security & billing</h3>
@@ -418,10 +473,10 @@ node scripts/run_task.js \
 
 <section class="final">
   <div class="container">
-    <h2 class="reveal" data-en="Ready to give your agent media powers?" data-zh="准备好让你的智能体拥有媒体能力了吗？">Ready to give your agent media powers?</h2>
-    <p class="reveal" data-en="Grab a free API key and drop the skill into your agent in minutes." data-zh="获取一个免费 API Key，几分钟内将技能接入你的智能体。">Grab a free API key and drop the skill into your agent in minutes.</p>
+    <h2 class="reveal" data-en="Ready to turn your product photos into sales content?" data-zh="准备好把产品照变成卖货素材了吗？">Ready to turn your product photos into sales content?</h2>
+    <p class="reveal" data-en="Grab a free API key and let your AI assistant make your first listing image or video today." data-zh="获取一个免费 API Key，今天就让你的 AI 助手做出第一张详情图或第一段视频。">Grab a free API key and let your AI assistant make your first listing image or video today.</p>
     <div class="hero-cta reveal">
-      <a class="btn btn-primary" href="https://www.xiaohongque.com" data-en="Get an API Key" data-zh="获取 API Key">Get an API Key</a>
+      <a class="btn btn-primary" href="https://www.xiaohongque.com" data-en="Get a free API Key" data-zh="免费获取 API Key">Get a free API Key</a>
       <a class="btn btn-ghost" href="https://github.com/xiaohongque/xhq-skill-media-generator" data-en="View on GitHub" data-zh="在 GitHub 查看">View on GitHub</a>
     </div>
   </div>
@@ -429,7 +484,7 @@ node scripts/run_task.js \
 
 <footer>
   <div class="container foot-inner">
-    <div>© 2026 小红雀 AI · XHQ Media Generator</div>
+    <div>© 2026 小红雀 AI · XHQ Media Studio</div>
     <div class="foot-links">
       <a href="https://www.xiaohongque.com" data-en="Web app" data-zh="网页端">Web app</a>
       <a href="https://github.com/xiaohongque/xhq-skill-media-generator/blob/main/README.md" data-en="Docs" data-zh="文档">Docs</a>
@@ -461,16 +516,17 @@ node scripts/run_task.js \
     applyLang(saved);
   })();
 
-  // Copy button
+  // Copy button (only present on pages that include the code block)
   const copyBtn = document.getElementById('copyBtn');
-  copyBtn.addEventListener('click', () => {
-    const text = document.getElementById('codeText').innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      const orig = copyBtn.getAttribute('data-en');
-      copyBtn.textContent = '✓';
-      setTimeout(() => { copyBtn.textContent = document.documentElement.lang.startsWith('zh') ? '复制' : 'Copy'; }, 1500);
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const text = document.getElementById('codeText').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        copyBtn.textContent = '✓';
+        setTimeout(() => { copyBtn.textContent = document.documentElement.lang.startsWith('zh') ? '复制' : 'Copy'; }, 1500);
+      });
     });
-  });
+  }
 
   // Reveal on scroll
   const io = new IntersectionObserver((entries) => {
