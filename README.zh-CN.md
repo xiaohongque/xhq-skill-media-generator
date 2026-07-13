@@ -1,4 +1,4 @@
-# 小红雀媒体生成
+# 小红雀Skill
 
 > 🌐 其他语言：[English](./README.md)
 

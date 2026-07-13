@@ -1,4 +1,4 @@
-# XHQ Media Generator
+# XHQ Media Generator Skill
 
 > 🌐 Other languages: [简体中文](./README.zh-CN.md)
 
