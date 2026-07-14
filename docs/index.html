@@ -150,7 +150,18 @@
   .step .num { width: 38px; height: 38px; border-radius: 50%; background: var(--grad); display: grid; place-items: center; font-weight: 800; color: #fff; margin-bottom: 16px; }
   .step h3 { margin: 0 0 8px; font-size: 18px; }
   .step p { margin: 0; color: var(--muted); font-size: 15px; }
+  .step.secondary { border-style: dashed; background: transparent; }
+  .step.secondary .num { background: var(--bg-soft); color: var(--brand); border: 1px solid var(--card-border); }
+  .step .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--card-border); border-radius: 999px; padding: 2px 10px; margin-bottom: 14px; }
+  .expand { margin-top: 14px; border: 1px solid var(--card-border); border-radius: 10px; background: var(--bg); overflow: hidden; }
+  .expand summary { cursor: pointer; list-style: none; padding: 12px 16px; font-weight: 600; font-size: 14px; color: var(--brand); user-select: none; }
+  .expand summary::-webkit-details-marker { display: none; }
+  .expand summary::before { content: '▸ '; }
+  .expand[open] summary::before { content: '▾ '; }
+  .expand p { margin: 0; padding: 0 16px 14px; color: var(--muted); font-size: 14px; }
+  .expand .shot { margin: 0 16px 16px; width: calc(100% - 32px); }
   .shot { margin-top: 16px; border-radius: 12px; border: 1px solid var(--card-border); width: 100%; display: block; }
+  .cmd { margin-top: 14px; border: 1px solid var(--card-border); border-radius: 12px; background: #0e0e16; padding: 14px 16px; font-family: 'JetBrains Mono', monospace; font-size: 13.5px; line-height: 1.6; color: #d6d6e0; white-space: pre-wrap; word-break: break-all; }
 
   /* TABLE */
   .table-wrap { border: 1px solid var(--card-border); border-radius: var(--radius); overflow: hidden; }
@@ -209,7 +220,7 @@
       <a href="#features" data-en="Features" data-zh="能力">Features</a>
       <a href="#examples" data-en="Examples" data-zh="示例">Examples</a>
       <a href="#capabilities" data-en="What it makes" data-zh="能创作什么">What it makes</a>
-      <a href="#how" data-en="How it works" data-zh="使用方式">How it works</a>
+      <a href="#how" data-en="Install" data-zh="安装">Install</a>
       <a href="#quickstart" data-en="Chat" data-zh="对话">Chat</a>
       <a href="https://github.com/xiaohongque/xhq-skill-media-generator/blob/main/README.md" data-en="Docs" data-zh="文档">Docs</a>
       <button class="lang-toggle" id="langBtn">中文</button>
@@ -389,26 +400,24 @@
   <div class="container">
     <div class="sec-head reveal">
       <div class="eyebrow" data-en="Getting started" data-zh="快速上手">Getting started</div>
-      <h2 data-en="Skill usage steps" data-zh="Skill 使用步骤">Skill usage steps</h2>
-      <p data-en="Built for sellers, not just developers. If you can install a skill into your AI assistant, you can run the whole studio." data-zh="为卖家而设计，不只是给开发者。只要能把 Skill 装进你的 AI 助手，整套工作室就跑起来了。">Built for sellers, not just developers. If you can install a skill into your AI assistant, you can run the whole studio.</p>
+      <h2 data-en="Install the Skill" data-zh="安装 Skill">Install the Skill</h2>
+      <p data-en="Two steps. Install the Skill, then hand your agent the API Key. Both are plain-language — no manual copying, no code." data-zh="两步。装上 Skill，再把 API Key 交给智能体。全是大白话——无需手动复制，无需写代码。">Two steps. Install the Skill, then hand your agent the API Key. Both are plain-language — no manual copying, no code.</p>
     </div>
 
-    <div class="steps">
-      <div class="step reveal">
-        <div class="num">1</div>
-        <h3 data-en="Get a free API Key" data-zh="获取免费 API Key">Get a free API Key</h3>
-        <p data-en="Log into xiaohongque.com → Settings → Account → API Keys → “+ Create Key”. Copy the one-time sk_… key." data-zh="登录 xiaohongque.com → 设置 → 账户 → API 密钥 →「+ 创建密钥」。复制仅展示一次的 sk_… 密钥。">Log into xiaohongque.com → Settings → Account → API Keys → “+ Create Key”. Copy the one-time sk_… key.</p>
-        <img class="shot" src="./screen.png" alt="Create API Key" />
-      </div>
-      <div class="step reveal">
-        <div class="num">2</div>
+    <div class="steps" style="grid-template-columns:1fr; max-width:720px; margin:0 auto;">
+      <div class="step reveal" style="text-align:left;">
         <h3 data-en="Ask your agent to install the Skill" data-zh="让智能体安装 Skill">Ask your agent to install the Skill</h3>
-        <p data-en="Just tell your agent: “Install this skill: <a href='https://github.com/xiaohongque/xhq-skill-media-generator'>https://github.com/xiaohongque/xhq-skill-media-generator</a> and follow the steps.” It clones the Skill into the right folder and sets up XHQ_API_KEY — no manual copying." data-zh="直接对你的智能体说：「安装这个 Skill：<a href='https://github.com/xiaohongque/xhq-skill-media-generator'>https://github.com/xiaohongque/xhq-skill-media-generator</a>，按步骤来。」它会把 Skill 克隆到正确的 Skills 目录并配好 XHQ_API_KEY——无需手动复制。">Just tell your agent: “Install this skill: <a href='https://github.com/xiaohongque/xhq-skill-media-generator'>https://github.com/xiaohongque/xhq-skill-media-generator</a> and follow the steps.” It clones the Skill into the right folder and sets up XHQ_API_KEY — no manual copying.</p>
+        <p data-en="Just send your agent the line below and let it handle the rest." data-zh="把下面这句发给你的智能体，剩下的交给它。">Just send your agent the line below and let it handle the rest.</p>
+        <pre class="cmd" data-en="Install this skill: https://github.com/xiaohongque/xhq-skill-media-generator and follow the steps." data-zh="安装这个 Skill：https://github.com/xiaohongque/xhq-skill-media-generator，按步骤来。">Install this skill: https://github.com/xiaohongque/xhq-skill-media-generator and follow the steps.</pre>
       </div>
-      <div class="step reveal">
-        <div class="num">3</div>
-        <h3 data-en="Tell it what to make" data-zh="开口说需求">Tell it what to make</h3>
-        <p data-en="Show a product photo and describe the result. It submits, generates, and hands you media URLs — 雀豆 deducted automatically." data-zh="给张产品照，描述想要的效果。它提交、生成并返回结果 URL——雀豆自动扣除。">Show a product photo and describe the result. It submits, generates, and hands you result URLs — 雀豆 deducted automatically.</p>
+      <div class="step secondary reveal" style="text-align:left;">
+        <h3 data-en="Get a free key, then tell your agent" data-zh="免费拿一个 Key，再告诉智能体">Get a free key, then tell your agent</h3>
+        <p data-en="Get a key from xiaohongque.com, then tell your agent: “My XHQ API key is sk_…”. Codex remembers it for next time." data-zh="在 xiaohongque.com 拿到 Key，然后告诉智能体：「我的 XHQ API Key 是 sk_…」。Codex 会记下它，下次直接用。">Get a key from xiaohongque.com, then tell your agent: “My XHQ API key is sk_…”. Codex remembers it for next time.</p>
+        <details class="expand">
+          <summary data-en="Show me how to get a key" data-zh="告诉我怎么拿 Key">Show me how to get a key</summary>
+          <p data-en="Log into xiaohongque.com → User Avatar → Account → API Keys → “+ Create Key”. Copy the one-time sk_… key." data-zh="登录 xiaohongque.com → 用户头像 → 账户管理 → API 密钥 →「+ 创建密钥」。复制仅展示一次的 sk_… 密钥。">Log into xiaohongque.com → User Avatar → Account → API Keys → “+ Create Key”. Copy the one-time sk_… key.</p>
+          <img class="shot" src="./screen.png" alt="Create API Key" />
+        </details>
       </div>
     </div>
   </div>
