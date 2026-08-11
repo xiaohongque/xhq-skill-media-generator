@@ -106,3 +106,20 @@ GET https://app.xiaohongque.com/api/v1/capabilities
 
 大多数能力在提交时会从你的账户余额中扣除 雀豆（积分）；余额不足会返回
 HTTP 402。目录中标注了每个 provider 的定价，以便智能体在调用前提醒用户。
+
+## 保持技能为最新
+
+本技能可以从最新的 GitHub Release 自我更新。运行内置的辅助脚本（Node 18+，无依赖）：
+
+```bash
+node scripts/update_skill.js            # 若存在更新的版本，则更新到最新 Release
+node scripts/update_skill.js --check    # 仅检查；若存在更新版本则以退出码 2 结束
+```
+
+它会查询 GitHub Releases API，将最新 tag 与仓库根目录的 `VERSION` 文件对比；
+当存在更新的版本时，会下载该 Release 的源码归档并解压覆盖到技能目录。
+`VERSION` 随 Release 一起分发，因此脚本**绝不会**在客户端侧自行写入它。
+
+其他可选项：`--force`（即使已是最新也重新安装最新版）、`--dry-run`（不写入）、
+`--repo owner/name`（覆盖来源仓库）、`--root /path`（覆盖技能目录）、
+`--timeout ms`（网络超时，默认 120000）。

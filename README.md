@@ -130,7 +130,8 @@ model-capabilities/
 ├── SKILL.md                 # frontmatter (CodeBuddy trigger) + agent-agnostic body
 ├── README.md                # this file
 ├── scripts/
-│   └── run_task.js          # submit → poll → print OSS result (Node 18+, no deps)
+│   ├── run_task.js          # submit → poll → print OSS result (Node 18+, no deps)
+│   └── update_skill.js      # self-update from latest GitHub release (Node 18+, no deps)
 └── references/
     ├── catalog.md           # provider catalog: video + image + digital human
     └── auth.md              # how to obtain & supply a Bearer API key
@@ -156,6 +157,25 @@ catalog in `references/catalog.md`. Use `scripts/run_task.js` to execute a task.
 ```
 
 Other agents ignore the YAML frontmatter and read the markdown body directly.
+
+## Updating the skill
+
+The skill can update itself to the latest GitHub release. The bundled helper
+`scripts/update_skill.js` (Node 18+, no external dependencies) queries the
+GitHub Releases API, compares the latest tag against the repo-root `VERSION`
+file, and — when a newer release exists — downloads the release source archive
+and extracts it over the skill directory:
+
+```bash
+node scripts/update_skill.js            # update to the latest release if a newer one exists
+node scripts/update_skill.js --check    # report only; exit 2 if a newer release exists
+node scripts/update_skill.js --force    # re-install the latest release even if already current
+```
+
+`VERSION` ships inside the release archive, so the script never writes it at the
+client side. Other options: `--dry-run` (no writes), `--repo owner/name`
+(override the source repo), `--root /path` (override the skill directory),
+`--timeout ms` (network timeout, default 120000).
 
 ## Environment variables (used by `run_task.js` and direct REST calls)
 

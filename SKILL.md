@@ -128,3 +128,24 @@ GET https://app.xiaohongque.com/api/v1/capabilities
 Most capabilities consume credits (雀豆) from your account balance at submit
 time; insufficient balance returns HTTP 402. The catalog notes each provider's
 pricing so the agent can warn the user before calling.
+
+## Keeping the skill up to date
+
+This skill can update itself from the latest GitHub release. Run the bundled
+helper (Node 18+, no dependencies):
+
+```bash
+node scripts/update_skill.js            # update to the latest release if a newer one exists
+node scripts/update_skill.js --check    # report only; exit 2 if a newer release exists
+```
+
+It queries the GitHub Releases API, compares the latest tag against the
+repo-root `VERSION` file, and — when a newer release is available — downloads
+the release source archive and extracts it over the skill directory. `VERSION`
+ships inside the release, so the script never writes it at the client side.
+
+Other options: `--force` (re-install latest even if current), `--dry-run` (no
+writes), `--repo owner/name` (override the source repo),
+`--root /path` (override the skill directory), `--timeout ms` (network timeout,
+default 120000).
+

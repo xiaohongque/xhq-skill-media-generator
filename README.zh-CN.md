@@ -121,7 +121,8 @@ node scripts/run_task.js \
 ├── SKILL.md                 # frontmatter（CodeBuddy 触发）+ 与智能体无关的正文
 ├── README.md                # 本文件
 ├── scripts/
-│   └── run_task.js          # 提交 → 轮询 → 打印 OSS 结果（Node 18+，无依赖）
+│   ├── run_task.js          # 提交 → 轮询 → 打印 OSS 结果（Node 18+，无依赖）
+│   └── update_skill.js      # 从最新 GitHub Release 自我更新（Node 18+，无依赖）
 └── references/
     ├── catalog.md           # provider 目录：视频 + 图像 + 数字人
     └── auth.md              # 如何获取并提供 Bearer API Key
@@ -147,6 +148,23 @@ node scripts/run_task.js \
 ```
 
 其他智能体会忽略 YAML frontmatter，直接读取 markdown 正文。
+
+## 更新技能
+
+技能可以自我更新到最新的 GitHub Release。内置的辅助脚本
+`scripts/update_skill.js`（Node 18+，无外部依赖）会查询 GitHub Releases API，
+将最新 tag 与仓库根目录的 `VERSION` 文件对比；当存在更新版本时，会下载该
+Release 的源码归档并解压覆盖到技能目录：
+
+```bash
+node scripts/update_skill.js            # 若存在更新的版本，则更新到最新 Release
+node scripts/update_skill.js --check    # 仅检查；若存在更新版本则以退出码 2 结束
+node scripts/update_skill.js --force    # 即使已是最新也重新安装最新版
+```
+
+`VERSION` 随 Release 归档一起分发，因此脚本**绝不会**在客户端侧自行写入它。
+其他可选项：`--dry-run`（不写入）、`--repo owner/name`（覆盖来源仓库）、
+`--root /path`（覆盖技能目录）、`--timeout ms`（网络超时，默认 120000）。
 
 ## 环境变量（供 `run_task.js` 与直接 REST 调用使用）
 
