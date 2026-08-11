@@ -17,7 +17,7 @@ Authorization: Bearer {XHQ_API_KEY}
 > `XHQ_API_BASE` 环境变量覆盖它。
 
 > **`provider` 的值必须是 `GET /api/v1/capabilities` 返回的某个 `key`**
-> （例如 `video.seedance-2.0`、`image.banana`）。这些是路由组键；不要传入
+> （例如 `video.seedance-2.0`、`video.seedance-2.5`、`image.banana`）。这些是路由组键；不要传入
 > `danmugo`、`seedance-2-0-rp` 这类单独的生成器名称——只有路由组键是被公开
 > 列出且受支持的。
 
@@ -28,6 +28,7 @@ Authorization: Bearer {XHQ_API_KEY}
   "success": true,
   "providers": [
     { "key": "video.seedance-2.0",      "kind": "video", "description": "Seedance 2.0 video generation" },
+    { "key": "video.seedance-2.5",      "kind": "video", "description": "Seedance 2.5 video generation" },
     { "key": "video.seedance-fast-2.0", "kind": "video", "description": "Seedance 2.0 video generation" },
     { "key": "video.seedance-mini-2.0", "kind": "video", "description": "Seedance 2.0 video generation" },
     { "key": "video.grok-image-1.5",    "kind": "video", "description": "Grok Image 1.5 video generation" },
@@ -42,6 +43,7 @@ Authorization: Bearer {XHQ_API_KEY}
 | Provider（`provider`）    | 说明                    | 关键参数                                                                                                        |
 | --------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `video.seedance-2.0`      | Seedance 2.0 视频生成   | `prompt`, `image_urls`（≤3）, `video_url`, `audio_url`, `duration`, `aspect_ratio`, `resolution` |
+| `video.seedance-2.5`      | Seedance 2.5 视频生成   | `prompt`, `image_urls`（≤3）, `video_url`, `audio_url`, `duration`, `aspect_ratio`, `resolution`（`480p`/`720p` 仅） |
 | `video.seedance-fast-2.0` | Seedance 2.0 快速档     | 同`video.seedance-2.0`                                                                                        |
 | `video.seedance-mini-2.0` | Seedance 2.0 mini 档    | 同`video.seedance-2.0`                                                                                        |
 | `video.grok-image-1.5`    | Grok Image 1.5 视频生成 | `prompt`, `image_urls`, `duration`, `aspect_ratio`                                                      |

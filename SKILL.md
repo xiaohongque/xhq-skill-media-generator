@@ -54,6 +54,16 @@ node scripts/run_task.js \
   --params '{"prompt":"A calm ocean wave rolling toward shore","image_urls":["https://.../ref.jpg"],"duration":5,"aspect_ratio":"16:9"}'
 ```
 
+Seedance 2.5 is also available via the `video.seedance-2.5` group key, with
+the same params (prompt, image_urls, video_url, audio_url, duration,
+aspect_ratio, resolution). Its `resolution` accepts only `480p` and `720p`:
+
+```bash
+node scripts/run_task.js \
+  --provider video.seedance-2.5 \
+  --params '{"prompt":"A calm ocean wave rolling toward shore","image_urls":["https://.../ref.jpg"],"duration":5,"aspect_ratio":"16:9","resolution":"720p"}'
+```
+
 It prints the final `{ taskId, status, result }` and exits non-zero on failure.
 
 ### B. Call the REST API directly
@@ -109,9 +119,9 @@ GET https://app.xiaohongque.com/api/v1/capabilities
 > `XHQ_API_BASE` env var only when pointing at a different deployment.
 
 > The `provider` value **must be one of the `key`s returned by
-> `GET /api/v1/capabilities`** (e.g. `video.seedance-2.0`, `image.banana`).
-> These are routing-group keys that resolve to an underlying generator; only
-> the group keys are advertised and supported.
+> `GET /api/v1/capabilities`** (e.g. `video.seedance-2.0`, `video.seedance-2.5`,
+> `image.banana`). These are routing-group keys that resolve to an underlying
+> generator; only the group keys are advertised and supported.
 
 ## Cost awareness
 

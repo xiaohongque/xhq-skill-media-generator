@@ -18,7 +18,7 @@ are OSS URLs in `result.videos` / `result.images` / `result.audios`.
 > `XHQ_API_BASE` env var only for a non-default deployment.
 
 > **The `provider` value must be one of the `key`s returned by
-> `GET /api/v1/capabilities`** (e.g. `video.seedance-2.0`, `image.banana`).
+> `GET /api/v1/capabilities`** (e.g. `video.seedance-2.0`, `video.seedance-2.5`, `image.banana`).
 > These are routing-group keys; do not pass an individual generator name such
 > as `danmugo` or `seedance-2-0-rp` — only the group keys are advertised and
 > supported.
@@ -30,6 +30,7 @@ are OSS URLs in `result.videos` / `result.images` / `result.audios`.
   "success": true,
   "providers": [
     { "key": "video.seedance-2.0",      "kind": "video", "description": "Seedance 2.0 video generation" },
+    { "key": "video.seedance-2.5",      "kind": "video", "description": "Seedance 2.5 video generation" },
     { "key": "video.seedance-fast-2.0", "kind": "video", "description": "Seedance 2.0 video generation" },
     { "key": "video.seedance-mini-2.0", "kind": "video", "description": "Seedance 2.0 video generation" },
     { "key": "video.grok-image-1.5",    "kind": "video", "description": "Grok Image 1.5 video generation" },
@@ -44,6 +45,7 @@ are OSS URLs in `result.videos` / `result.images` / `result.audios`.
 | Provider (`provider`)     | Description                     | Key params                                                                                                     |
 | --------------------------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `video.seedance-2.0`      | Seedance 2.0 video generation   | `prompt`, `image_urls` (≤3), `video_url`, `audio_url`, `duration`, `aspect_ratio`, `resolution` |
+| `video.seedance-2.5`      | Seedance 2.5 video generation   | `prompt`, `image_urls` (≤3), `video_url`, `audio_url`, `duration`, `aspect_ratio`, `resolution` (`480p`/`720p` only) |
 | `video.seedance-fast-2.0` | Seedance 2.0 fast tier          | same as`video.seedance-2.0`                                                                                  |
 | `video.seedance-mini-2.0` | Seedance 2.0 mini tier          | same as`video.seedance-2.0`                                                                                  |
 | `video.grok-image-1.5`    | Grok Image 1.5 video generation | `prompt`, `image_urls`, `duration`, `aspect_ratio`                                                     |

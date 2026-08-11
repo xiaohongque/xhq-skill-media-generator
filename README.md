@@ -24,6 +24,18 @@ which params**. This skill supplies that knowledge in a plain, portable form,
 plus a runnable helper script so agents that execute code don't have to
 re-derive the submit/poll flow each time.
 
+For example, to generate a video with Seedance 2.5:
+
+```bash
+node scripts/run_task.js \
+  --provider video.seedance-2.5 \
+  --params '{"prompt":"A calm ocean wave rolling toward shore","image_urls":["https://.../ref.jpg"],"duration":5,"aspect_ratio":"16:9","resolution":"720p"}'
+```
+
+See `references/catalog.md` for the full provider catalog (including
+`video.seedance-2.0`, `video.seedance-2.5`, `image.banana`, and more). The
+`video.seedance-2.5` provider's `resolution` accepts only `480p` and `720p`.
+
 ## How a user gets started
 
 ### Step 1 — Create an API Key in the product

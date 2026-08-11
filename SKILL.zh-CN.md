@@ -36,6 +36,16 @@ node scripts/run_task.js \
   --params '{"prompt":"A calm ocean wave rolling toward shore","image_urls":["https://.../ref.jpg"],"duration":5,"aspect_ratio":"16:9"}'
 ```
 
+Seedance 2.5 也可通过 `video.seedance-2.5` 路由组键调用，参数相同（prompt、
+image_urls、video_url、audio_url、duration、aspect_ratio、resolution）。其
+`resolution` 仅支持 `480p` 和 `720p`：
+
+```bash
+node scripts/run_task.js \
+  --provider video.seedance-2.5 \
+  --params '{"prompt":"A calm ocean wave rolling toward shore","image_urls":["https://.../ref.jpg"],"duration":5,"aspect_ratio":"16:9","resolution":"720p"}'
+```
+
 脚本会打印最终的 `{ taskId, status, result }`，失败时以非零状态码退出。
 
 ### B. 直接调用 REST API
@@ -86,7 +96,7 @@ GET https://app.xiaohongque.com/api/v1/capabilities
 ```
 
 > `provider` 的值**必须是 `GET /api/v1/capabilities` 返回的某个 `key`**
-> （例如 `video.seedance-2.0`、`image.banana`）。这些是路由组键，会解析到某个
+> （例如 `video.seedance-2.0`、`video.seedance-2.5`、`image.banana`）。这些是路由组键，会解析到某个
 > 底层生成器；只有路由组键是被公开列出且受支持的。
 
 > 基础域名默认为 `https://app.xiaohongque.com`。仅在指向其他部署时，才用

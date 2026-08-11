@@ -21,6 +21,18 @@
 可移植的形式提供这些知识，外加一个可运行的辅助脚本，让能够执行代码的智能体
 不必每次都重新推导「提交 / 轮询」流程。
 
+例如，使用 Seedance 2.5 生成视频：
+
+```bash
+node scripts/run_task.js \
+  --provider video.seedance-2.5 \
+  --params '{"prompt":"A calm ocean wave rolling toward shore","image_urls":["https://.../ref.jpg"],"duration":5,"aspect_ratio":"16:9","resolution":"720p"}'
+```
+
+完整的 provider 目录（包括 `video.seedance-2.0`、`video.seedance-2.5`、
+`image.banana` 等）见 `references/catalog.md`。`video.seedance-2.5` 的
+`resolution` 仅支持 `480p` 和 `720p`。
+
 ## 用户如何开始
 
 ### 一、第一步：在产品中创建 API Key
